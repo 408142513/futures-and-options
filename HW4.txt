@@ -1,0 +1,94 @@
+#collar
+
+n=10000
+S=zeros(n)
+K1=95
+K2=105
+
+Payoff_1=zeros(n)
+Payoff_2=zeros(n)
+
+for i =1:n
+S[i]=i/100
+Payoff_1[i]=max(0,S[i]-K1)
+Payoff_2[i]=-1*max(S[i]-K2,0)
+Payoff_3[i]=Payoff_1[i]+Payoff_2[i]
+end
+
+using Plots
+scatter(S,Payoff_3)
+
+
+
+#box spreads
+
+n=10000
+S=zeros(n)
+K3=95
+K4=100
+
+Payoff_3=zeros(n)
+Payoff_4=zeros(n)
+Payoff_5=zeros(n)
+Payoff_6=zeros(n)
+
+for i =1:n
+S[i]=i/100
+Payoff_3[i]=max(S[i]-K3,0)
+Payoff_4[i]=-1*max(S[i]-K4,0)
+Payoff_5[i]=max(0,S[i]-K4)
+Payoff_6[i]=-1*max(0,S[i]-K3)
+Payoff_7[i]=Payoff_3[i]+Payoff_4[i]+Payoff_5[i]+Payoff_6[i]
+end
+
+using Plots
+scatter(S,Payoff_7)
+
+
+
+#ratio spreads
+
+n=10000
+S=zeros(n)
+K5=100
+K6=95
+
+Payoff_8=zeros(n)
+Payoff_9=zeros(n)
+
+for i =1:n
+S[i]=i/100
+Payoff_8[i]=max(S[i]-K5,0)
+Payoff_9[i]=-2*max(0,S[i]-K6)
+Payoff_10[i]=Payoff_8[i]+Payoff_9[i]
+end
+
+using Plots
+scatter(S,Payoff_10)
+
+
+
+#condors
+
+n=10000
+S=zeros(n)
+K7=95
+K8=100
+K9=105
+
+Payoff_11=zeros(n)
+Payoff_12=zeros(n)
+Payoff_13=zeros(n)
+Payoff_14=zeros(n)
+
+for i =1:n
+S[i]=i/100
+Payoff_11[i]=max(S[i]-K7,0)
+Payoff_12[i]=-1*max(S[i]-K8,0)
+Payoff_13[i]=-1*max(S[i]-K8,0)
+Payoff_14[i]=max(S[i]-K9,0)
+Payoff_15[i]=Payoff_11[i]+Payoff_12[i]+Payoff_13[i]+Payoff_14[i]
+end
+
+using Plots
+scatter(S,Payoff_15)
